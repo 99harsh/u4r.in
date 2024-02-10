@@ -3,7 +3,7 @@ import Backdrop from './assets/images/backdrop.svg';
 import Cubes from './assets/images/cubes.svg';
 
 import './App.scss';
-import Header from './constants/Header/Header';
+import Home from './components/Home/Home';
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
         <img src={Cubes} className='main-backdrop-img' />
       </div>
       <div>
-        <Header />
+        <Home />
       </div>
     </div>
   );

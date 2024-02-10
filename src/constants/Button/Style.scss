@@ -1,0 +1,31 @@
+@import '../../constants/variable.scss';
+
+.button-main-container {
+    .button-container {
+
+        padding: 1rem 1.56rem;
+        border-radius: 3rem;
+        color: $light;
+
+        .button {
+
+            .icon {
+                padding-left: 0.31rem;
+                height: 1.25rem;
+                width: 1.25rem;
+            }
+        }
+
+    }
+
+    .primary-button-container {
+        background-color: $grey;
+        box-shadow: 0.625rem 0.562rem 1.375rem 0px rgba(24, 30, 41, 0.58);
+        border: 1px solid $dark-border;
+    }
+
+    .secondary-button-container {
+        background-color: $primary-blue;
+        box-shadow: 0.625rem 0.562rem 1.375rem 0px rgba(20, 78, 227, 0.38);
+    }
+}

@@ -1,0 +1,83 @@
+@import "../../constants/variable.scss";
+
+.home-main-container {
+
+    .center-container {
+        height: 70vh;
+    
+        .heading-container{
+            padding-bottom: 1.33rem;
+            .heading-text {
+                background: linear-gradient(
+                    90deg,
+                    #144ee3 -0.02%,
+                    #eb568e 18.86%,
+                    #a353aa 64.49%,
+                    #144ee3 100.67%
+                  );
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                font-size: 5.5rem!important;
+                font-weight: bold;
+            }
+        }
+
+        .subheading-text{
+            color:$lite;
+            font-size: 1.33rem !important;
+            width: 80%;
+        }
+
+        .switch-container,
+        .register-now-brand{
+            padding-top: 2.66rem;
+        }
+
+        .register-now-brand{
+            .brand-text{
+                color:$lite;
+                font-size: 1.2rem !important;
+            }
+
+            .brand-number{
+                color:$primary-pink;
+            }
+
+            .register-now-text{
+                color:$primary-blue;
+            }
+        }
+    }
+
+    .input-main-container{
+        padding-top: 3.5rem;
+        .input-inner-container{
+            padding:5px;
+            border:2px solid $dark-border;
+            background-color: $grey;
+            border-radius: 3rem;
+
+            .link-logo-container{
+                padding-left: .56rem;
+                .link-logo{
+                    height: 1.6rem;
+                    width: 1.6rem;
+                }
+            }
+
+            .input-box-container{
+                width: 35rem;
+                padding:0px 1rem;
+                .input-box{
+                    width: 100%;
+                    background-color: transparent;
+                    color: $lite;
+                    &:focus{
+                        outline: none!important;
+                    }
+                }
+            }
+        }
+    }
+}

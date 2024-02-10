@@ -1,12 +1,11 @@
 @import './constants/global.scss';
 
 .main-container {
-    display: flex;
     overflow: hidden;
     position: relative;
     min-height: 100vh;
     width: 100%;
-    padding: 2.5rem 3.12rem 0;
+    padding: 2.5rem 3dvb 0;
 
     .main-backdrop-img {
         position: absolute;

@@ -1,0 +1,26 @@
+@import '../../constants/variable.scss';
+
+.footer-main-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+     background:rgba(0, 0, 0, 0.2);
+    color: $lite;
+    padding: 1.33rem;
+    .footer-inner-container {
+        
+        .footer-text {
+            font-size: 1rem !important;
+            text-align: center;
+        }
+
+        .heart-icon{
+            height: 1rem;
+            width: 1rem;
+            margin:0px 5px;
+        }
+    }
+
+
+}
