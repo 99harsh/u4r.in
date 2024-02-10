@@ -33,3 +33,42 @@ $max_font: 16px;
 html { 
     @include fluid-type($min_width, $max_width, $min_font, $max_font);
 }
+
+@mixin rem-fallback($property, $values...){
+    $max: length($values);
+    $remValues: '';
+
+    @for $i from 1 through $max{
+        $value: nth($values) / 16;
+        $remValues: #{$remValues + $value}rem;
+        @if $i < $max {
+            $remValues: #{$remValues + " "};
+        }
+    }
+    #{$property}: $remValues;
+}
+
+h1{
+    font-size: 4rem!important;
+   // font-family: $sfpro-regular;
+}
+
+h2{
+    font-size: 3rem !important;
+}
+
+h3{
+    font-size: 2rem !important;
+}
+
+h4{
+    font-size: 1.75rem!important;
+}
+
+h5{
+    font-size: 1.5rem !important;
+}
+
+h6{
+    font-size: 1.25rem !important;
+}

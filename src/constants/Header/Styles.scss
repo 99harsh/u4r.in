@@ -1,0 +1,19 @@
+@import "../global.scss";
+.header-main-container {
+    .logo-container {
+        .logo {
+            $gradient-size: 100.24% 97.1%;
+            $gradient-position: 5.56% 79.01%;
+            $color-1: #eb568e;
+            $color-2: #144ee3;
+
+            color: transparent;
+            background: radial-gradient($gradient-size at $gradient-position,
+                    $color-1 0%,
+                    $color-2 100%);
+            background-clip: text;
+            font-size: 1.5rem;
+        }
+
+    }
+}
