@@ -1,0 +1,82 @@
+@import "../../constants/variable.scss";
+
+.auth-main-container {
+    height: 80vh;
+    .inner-container {
+        width: 30%;
+        border-radius: 1rem;
+        overflow: hidden;
+        .logo-container {
+            background-color: $grey;
+            .logo {
+                font-weight: bold;
+                color: transparent;
+                background: radial-gradient(100.24% 97.1% at 5.56% 79.01%, #eb568e 0%, #144ee3 100%);
+                background-clip: text;
+                font-size: 3rem !important;
+            }
+        }
+        
+        .input-form-container{
+            //rgb(24, 30, 41)
+            background-color: rgba(24,30,41,.5);
+
+            .auth-form-container{
+                .auth-label-text{
+                    color:$lite;
+                    font-size:2rem !important;
+                    padding: 2rem;
+                }
+            }
+
+            .form-container{
+                width: 60%;
+                .input-container{
+                    padding-bottom: 2rem;
+                    .forgot-container{
+                        padding-top: 1rem;
+                        .forgot-text{
+                            color:$primary-pink;
+                        }
+                    }
+                    .input-box{
+                        background: $grey;
+                        flex:1;
+                        padding:1.1rem;
+                        color:$lite;
+                        border:2px solid $dark-border;
+                        border-radius: 1rem;
+                        &:focus{
+                            outline: none!important;
+                        }
+                    }
+                }
+                .register-container{
+                    padding-bottom: 2rem;
+                    .register-now-text{
+                        color:$lite;
+                    }
+
+                    .register-now-link{
+                        color:$primary-pink;
+                    }
+                }
+            }
+        }
+
+        .footer-container {
+        
+            .footer-text {
+                font-size: 1rem !important;
+                text-align: center;
+                color:$lite;
+            }
+    
+            .heart-icon{
+                height: 1rem;
+                width: 1rem;
+                margin:0px 5px;
+            }
+        }
+    }
+}

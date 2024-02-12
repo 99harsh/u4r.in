@@ -1,0 +1,168 @@
+@import "../../constants/variable.scss";
+
+.home-main-container {
+
+    .center-container {
+        height: 70vh;
+    
+        .heading-container{
+            padding-bottom: 1.33rem;
+            .heading-text {
+                background: linear-gradient(
+                    90deg,
+                    #144ee3 -0.02%,
+                    #eb568e 18.86%,
+                    #a353aa 64.49%,
+                    #144ee3 100.67%
+                  );
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                font-size: 5.5rem!important;
+                font-weight: bold;
+            }
+        }
+
+        .subheading-text{
+            color:$lite;
+            font-size: 1.33rem !important;
+            width: 80%;
+        }
+
+        .switch-container,
+        .register-now-brand{
+            padding-top: 2.66rem;
+        }
+
+        .switch-container{
+
+            .settings-text{
+                color:$lite;
+            }
+            .gear-icon{
+                height: 1.66rem;
+            }
+        }
+
+        .register-now-brand{
+            padding-top:0.83rem;
+            .brand-text{
+                color:$lite;
+                font-size: 1.2rem !important;
+            }
+
+            .brand-number{
+                color:$primary-pink;
+            }
+
+            .register-now-text{
+                color:$primary-blue;
+            }
+        }
+
+        .accordian-container{
+
+            .accordian-inner-container{
+                background: rgba(24, 30, 41,0.5);
+                padding: 2rem;
+                border-radius: 3rem;
+                border: 2px solid $dark-border;
+
+                .generate-text{
+                    color:$lite;
+                }
+
+            }
+
+            .back-half-container{
+               .inner-backhalf-container{
+                margin:0px 0.83rem;
+
+                label{
+                    padding-left: 0.83rem;
+                    color:$lite;
+                    font-size: 1rem;
+                }
+
+                .dot{
+                    color: rgba(24, 30, 41,0.5);
+                }
+               }
+            }
+            .input{
+                background-color: $grey;
+                padding:0.83rem;
+                border-radius: 1.66rem;
+                margin-top: 5px;
+                border:2px solid $dark-border;
+
+                .domain-name{
+                    color:$lite;
+                    margin-right: 0.83rem;
+                }
+                .slash-text{
+                    color:$lite;
+                }
+                .lock-icon{
+                    height: 1.66rem;
+                    width: 1.66rem;
+                }
+
+                .back-half-input{
+                    background-color: transparent;
+                    color:$lite;
+                    border:0px;
+                    padding:0px;
+                    &:focus{
+                        outline: none!important;
+                        --tw-ring-color:none !important;
+                    }
+                }
+            }
+
+            
+        }   
+    }
+
+    .input-main-container{
+        padding-top: 3.5rem;
+        .input-inner-container{
+            padding:5px;
+            border:2px solid $dark-border;
+            background-color: $grey;
+            border-radius: 3rem;
+
+            .link-logo-container{
+                padding-left: .56rem;
+                .link-logo{
+                    height: 1.6rem;
+                    width: 1.6rem;
+                }
+            }
+
+            .input-box-container{
+                width: 35rem;
+                padding:0px 1rem;
+                .input-box{
+                    width: 100%;
+                    background-color: transparent;
+                    color: $lite;
+                    &:focus{
+                        outline: none!important;
+                    }
+                }
+            }
+        }
+    }
+
+    .active-text-box{
+        border-color: $success !important;
+        //75 181 67)
+        box-shadow: 0.625rem 0.562rem 1.375rem 0px rgba(75, 181, 67, 0.38);
+
+        .input-box{
+            color: $success !important;
+            font-size: 20px;
+        }
+    }
+}
