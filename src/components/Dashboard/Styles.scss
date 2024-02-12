@@ -1,9 +1,28 @@
 @import "../../constants/variable.scss";
 
-.dashboard-main-container{
-    .header-container{
-        .logo-container{
-            .logo{
+.dashboard-main-container {
+
+    input {
+        &:checked {
+            background-color: #22c55e !important;
+            /* bg-green-500 */
+            background-image: none !important;
+        }
+
+        &:focus {
+            outline: none !important;
+            --tw-ring-color: none !important;
+        }
+    }
+
+    input:checked~span:last-child {
+        --tw-translate-x: 1.75rem;
+        /* translate-x-7 */
+    }
+
+    .header-container {
+        .logo-container {
+            .logo {
                 $gradient-size: 100.24% 97.1%;
                 $gradient-position: 5.56% 79.01%;
                 $color-1: #eb568e;
@@ -17,5 +36,184 @@
                 font-size: 3rem !important;
             }
         }
+
+        .dropdown-btn {
+            color: $lite;
+            font-size: 1.3rem;
+        }
+
+        .dropdown-container {
+            width: 8.33rem;
+        }
+    }
+
+    .body-container {
+        margin-top: 2rem;
+
+        .create-container {
+            width: 30%;
+            background-color: $grey;
+            padding: 1rem;
+            border-radius: 1rem;
+            color: $lite;
+            padding-right: 2rem;
+
+
+            .input-container {
+                label {
+                    font-size: 1.2rem;
+                    padding-bottom: 5px;
+                }
+
+                .input-box {
+                    background-color: transparent;
+                    border-radius: 5px;
+                    padding: 10px;
+                }
+
+                .generate-text {
+                    color: $lite;
+                    font-size: 1.2rem !important;
+                }
+            }
+
+            .input-container {
+                padding-bottom: 1.66rem;
+            }
+        }
+
+        .history-container {
+            padding-top: 2rem;
+            width: 80%;
+
+            .history-heading-container {
+                padding-bottom: 2rem;
+
+                .wohoo-text {
+                    color: $light;
+
+                    .oo-container {
+
+                        color: $primary-pink;
+                    }
+                }
+
+                .sub-wohoo-text {
+                    color: $light;
+                }
+            }
+
+            .card-flex-container {
+                .card {
+                    flex: 1;
+                    background-color: rgba(35, 42, 57, 0.5);
+                    padding: 20px;
+                    border-radius: 10px;
+                    border: 2px solid $dark-border;
+                    margin: 20px;
+
+                    .card-header {
+                        .activate-text {
+                            color: $light;
+                            font-size: 1.1rem;
+                        }
+
+                        .card-heading {
+                            color: $light;
+                            font-size: 1.5rem;
+                            font-weight: '500';
+                        }
+                    }
+
+                    .card-body {
+                        margin:1.4rem 0px;
+                        .short-url {
+                            color: #019cff;
+                            font-weight: bold;
+                            font-size: 2rem !important;
+
+                            span {
+                                margin-right: 5px;
+                            }
+
+                            .link-icon {
+                                height: 20px;
+                            }
+
+                            .dot {
+                                color: $light;
+                                font-size: 1rem;
+                                padding: 2px 8px;
+                                margin-left: 5px;
+                                border-radius: 10px;
+                            }
+
+                            .active-link {
+                                background-color: $success;
+                            }
+
+                            .inactive-link {
+                                background-color: #f05152;
+                            }
+                        }
+
+                        .long-url {
+                            margin-top: 5px;
+                            font-size: 1.2rem !important;
+                            color: $primary-pink !important;
+                        }
+                    }
+
+                    .card-footer {
+                        margin-top: 1rem;
+
+                        .visit-count-container {
+                            .visit-count {
+                                color: $lite;
+                                font-size: 1.2rem;
+                                font-weight: bold;
+                            }
+
+                            .eye-icon {
+                                width: 1.5rem;
+                                height: 1.5rem;
+                                margin-right: 5px;
+                            }
+                        }
+
+                        .slash {
+                            color: $lite;
+                            font-size: 1rem;
+                            padding-left: 1rem;
+                        }
+
+                        .created-at-container {
+                            .created-at {
+                                padding-left: 1rem;
+                                color: $lite;
+                                font-size: 1.2rem;
+                                font-weight: bold;
+                            }
+                        }
+
+                        .btn-copy {
+                            background-color: $primary-blue;
+                            padding: 10px;
+                            font-size: 1rem;
+                            color: $light;
+                            border-radius: 10px;
+
+                            .copy-icon {
+                                height: 1rem;
+                                width: 1rem;
+                                margin-right: 4px;
+                            }
+                        }
+                    }
+
+                }
+            }
+        }
+
     }
 }

@@ -13,36 +13,36 @@ const Button = ({ type, icon, text, isLoading = false, onClick }: Btn) => {
         <div className='button-main-container'>
             {
                 type == "primary" ?
-                    <div className='button-container primary-button-container'>
-                        <button className='flex button items-center' onClick={onClick}>
+                    <button className='button-container primary-button-container' onClick={onClick}>
+                        <div className='flex button items-center' >
                             {text}
                             {
                                 icon ?
                                     <img src={icon} className='icon' /> : ""
                             }
-                        </button>
+                        </div>
 
-                    </div> :
+                    </button> :
                     type == "secondary" ?
-                        <div className='button-container secondary-button-container'>
-                            <button className='text-center' disabled={isLoading} onClick={onClick}>
+                        <button className='button-container secondary-button-container'  disabled={isLoading} onClick={onClick}>
+                            <div className='text-center'>
                                 {isLoading ?
                                     <div className="bouncing-loader">
                                         <div></div>
                                         <div></div>
                                         <div></div>
                                     </div> : text}
-                            </button>
-                        </div>
+                            </div>
+                        </button>
                         :
                         type == "success" ?
-                            <div className='button-container success-button-container'>
-                                <button className='flex button text-center' onClick={onClick}>{text}
+                            <button className='button-container success-button-container' onClick={onClick}>
+                                <div className='flex button text-center'>{text}
                                     {
                                         icon ?
                                             <img src={icon} className='success' /> : ""
-                                    }</button>
-                            </div>
+                                    }</div>
+                            </button>
                             : ""
             }
 

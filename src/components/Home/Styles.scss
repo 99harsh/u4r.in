@@ -35,6 +35,10 @@
         }
 
         .switch-container{
+
+            .settings-text{
+                color:$lite;
+            }
             .gear-icon{
                 height: 1.66rem;
             }
@@ -63,6 +67,10 @@
                 padding: 2rem;
                 border-radius: 3rem;
                 border: 2px solid $dark-border;
+
+                .generate-text{
+                    color:$lite;
+                }
 
             }
 
@@ -103,8 +111,11 @@
                 .back-half-input{
                     background-color: transparent;
                     color:$lite;
+                    border:0px;
+                    padding:0px;
                     &:focus{
-                        outline: none;
+                        outline: none!important;
+                        --tw-ring-color:none !important;
                     }
                 }
             }
