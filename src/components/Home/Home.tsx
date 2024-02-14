@@ -192,7 +192,7 @@ const Home = () => {
 
                                 <label className="relative inline-flex items-center cursor-pointer pl-3 gear-icon" onClick={() => { setAccordionOpen(!accordionOpen) }}>
                                     <img src={GearIcon} className='gear-icon' />
-                                    <span className="ms-1 text-sm font-medium text-gray-900 dark:text-gray-300 settings-text">Settings</span>
+                                    <span className="ms-1 text-sm font-medium text-gray-900 dark:text-gray-300 settings-text">Customize</span>
                                 </label>
                             </div>
                             <span className='text-primary'>{isDisabled}</span>
