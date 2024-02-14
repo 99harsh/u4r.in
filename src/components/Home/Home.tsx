@@ -11,7 +11,7 @@ import GearIcon from '../../assets/icons/gear.svg';
 import LinkIcon from '../../assets/icons/link.svg';
 import CopyIcon from '../../assets/icons/clipboard.svg';
 
-import {CopyToClipboard} from 'react-copy-to-clipboard';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 const Home = () => {
 
     const [accordionOpen, setAccordionOpen] = useState(false);
@@ -45,8 +45,8 @@ const Home = () => {
             console.log(regex.test(text), text, errorMessage.message)
         } else if (input === "custom_short_url") {
             const regex = /^[a-zA-Z0-9_-]+$/;
-            if(text === ""){
-                setErrorMessage((prevState:any) => ({...prevState, settingsError: ""}))
+            if (text === "") {
+                setErrorMessage((prevState: any) => ({ ...prevState, settingsError: "" }))
             }
             else if (text.length < 7 || text.length > 100) {
                 setErrorMessage((prevState: any) => ({ ...prevState, settingsError: "Input must be in between 7-100 characters long" }))
@@ -89,26 +89,26 @@ const Home = () => {
         }
     }
 
-    const checkBackHalfHandler = async(text:string) =>{
+    const checkBackHalfHandler = async (text: string) => {
         setIsDisabled(true);
-        try{
-            const {data} = await axios.get(`https://u4r.in/check_availability/${text}`)
-            if(data.status === 200 && data?.data?.is_available){
+        try {
+            const { data } = await axios.get(`https://u4r.in/check_availability/${text}`)
+            if (data.status === 200 && data?.data?.is_available) {
                 setIsAvailable(true)
                 setIsDisabled(false);
-            }else{
-                setErrorMessage((prevState:any) => ({...prevState, settingsError: "Back Half link is already exist!"}))
+            } else {
+                setErrorMessage((prevState: any) => ({ ...prevState, settingsError: "Back half link already exist!" }))
                 setIsAvailable(false);
                 setIsDisabled(true);
             }
-        }catch(error){
+        } catch (error) {
             alert("Something Went Wrong!");
             console.log("Server Error!", error);
             setIsDisabled(false);
         }
-    } 
-    useEffect(()=>{
-        if(errorMessage.settingsError === "" && formData?.custom_short_url?.length >= 7){
+    }
+    useEffect(() => {
+        if (errorMessage.settingsError === "" && formData?.custom_short_url?.length >= 7) {
             setIsDisabled(true);
             setIsAvailable(false);
             const delay = 300;
@@ -122,7 +122,7 @@ const Home = () => {
     }, [formData.custom_short_url]);
 
 
-    
+
     return (
         <div className='home-main-container'>
             <div>
@@ -148,7 +148,7 @@ const Home = () => {
                                     </div>
                                     <div className='button-container'>
                                         <CopyToClipboard text={shortURL}
-                                            onCopy={() => {setCopied(true)}}>
+                                            onCopy={() => { setCopied(true) }}>
                                             <Button type='success' text={`${copied ? 'Copied' : 'Copy'}`} icon={CopyIcon} onClick={() => { }} />
                                         </CopyToClipboard>
                                     </div>
@@ -157,8 +157,8 @@ const Home = () => {
                             <div className='switch-container'>
                                 <Button type='secondary' text='Generate More' onClick={() => {
                                     setShortURL("");
-                                    setFormData((prevState:any) =>({...prevState, destination_url:""}))
-                                    setFormData((prevState:any) => ({...prevState, custom_short_url:""}))
+                                    setFormData((prevState: any) => ({ ...prevState, destination_url: "" }))
+                                    setFormData((prevState: any) => ({ ...prevState, custom_short_url: "" }))
                                     setIsAvailable(false);
                                     setIsCreated(false);
                                 }} />
@@ -177,7 +177,7 @@ const Home = () => {
                                     <div className='button-container'>
                                         <Button type='secondary' text='Shorten Now!'
                                             isLoading={isLoading}
-                                            disabled={isDisabled}
+                                            disabled={isDisabled || errorMessage.settingsError != "" || errorMessage.message != ""}
                                             onClick={() => {
                                                 submitHandler()
                                             }} />
