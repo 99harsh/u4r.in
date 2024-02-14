@@ -69,4 +69,10 @@
     .success-button-container{
         background-color: $success;
     }
+
+    @media (min-width: 320px) and (max-width: 480px) {
+        .button-container{
+            padding:1rem !important;
+        }
+    }
 }

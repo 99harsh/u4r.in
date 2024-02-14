@@ -34,19 +34,19 @@ html {
     @include fluid-type($min_width, $max_width, $min_font, $max_font);
 }
 
-@mixin rem-fallback($property, $values...){
-    $max: length($values);
-    $remValues: '';
+// @mixin rem-fallback($property, $values...){
+//     $max: length($values);
+//     $remValues: '';
 
-    @for $i from 1 through $max{
-        $value: nth($values) / 16;
-        $remValues: #{$remValues + $value}rem;
-        @if $i < $max {
-            $remValues: #{$remValues + " "};
-        }
-    }
-    #{$property}: $remValues;
-}
+//     @for $i from 1 through $max{
+//         $value: nth($values) / 16;
+//         $remValues: #{$remValues + $value}rem;
+//         @if $i < $max {
+//             $remValues: #{$remValues + " "};
+//         }
+//     }
+//     #{$property}: $remValues;
+// }
 
 h1{
     font-size: 4rem!important;

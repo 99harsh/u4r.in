@@ -1,5 +1,7 @@
 import "./Styles.scss";
 
+import { Tooltip } from 'react-tooltip'
+
 import Button from "../../constants/Button/Button";
 
 import LinkOpen from '../../assets/icons/link-open.svg';
@@ -9,9 +11,12 @@ import CopyIcon from '../../assets/icons/copy-white.svg';
 import DownloadIcon from '../../assets/icons/download.svg';
 
 const Dashboard = () => {
-
+   
     return (
         <div className="dashboard-main-container">
+             {
+       JSON.stringify(window.screen)
+    }
             <div className="header-container flex items-center justify-between">
                 <div className="logo-container">
                     <h1 className="logo">U4R.in</h1>
@@ -46,7 +51,7 @@ const Dashboard = () => {
                         <label>Back-half URL (Optional)</label>
                         <input type='text' className="input-box" placeholder="Enter title" />
                     </div>
-                    <div className="input-container flex flex-col">
+                    {/* <div className="input-container flex flex-col">
                         <div>
                             <label className="relative inline-flex items-center cursor-pointer justify-center">
                                 <input type="checkbox" value="" className="sr-only peer" />
@@ -54,17 +59,17 @@ const Dashboard = () => {
                                 <span className="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300 generate-text">Generate QR</span>
                             </label>
                         </div>
-                    </div>
+                    </div> */}
                     <div className="">
                         <Button type="secondary" text="Generate Short Link" onClick={() => { }} />
                     </div>
                 </div>
                 <div className="history-container">
                     <div className="history-heading-container text-center">
-                        <h1 className="wohoo-text">W<span className="oo-container">oo</span>h<span className="oo-container">oo</span>!</h1>
+                        <h1 className="wohoo-text">W<span className="oo-container">oo</span>h<span className="oo-container">oooo</span>!</h1>
                         <span className="sub-wohoo-text">Here are your shortend URLs! Now start rick-rolling your friends!</span>
                     </div>
-                    <div className="card-flex-container grid grid-cols-2">
+                    <div className="card-flex-container flex flex-row flex-wrap">
                         <div className='card'>
                             <div className='card-header flex items-center justify-between'>
                                 <div>
@@ -104,14 +109,15 @@ const Dashboard = () => {
                                     </div>
                                 </div>
                                 <div className="flex flex-row items-center">
+                                    <button className="btn-copy flex items-center mr-4">
+                                        <img src={DownloadIcon} className="copy-icon" />
+                                        <span>Download QR</span>
+
+                                    </button>
+
                                     <button className="btn-copy flex items-center">
                                         <img src={CopyIcon} className="copy-icon" />
                                         <span>Copy</span>
-
-                                    </button>
-                                    <button className="btn-copy flex items-center ml-4">
-                                        <img src={DownloadIcon} className="copy-icon" />
-                                        <span>Download QR</span>
 
                                     </button>
 
@@ -139,9 +145,13 @@ const Dashboard = () => {
                                         <span className="dot active-link">Activate</span>
                                     </a>
                                     <a className="short-url long-url flex flex-row items-center" href="#">
-                                        <span>https://www.intricatecloud.io/2019/10/using-angular-innerhtml-to-display-user-generated-content-without-sacrificing-security/</span>
+                                        <span>https://www.intricatecloud.io/2019/10/using-angular-innerhtml-to-display-user-generated-content-without-sacrificing-security/https://www.intricatecloud.io/2019/10/using-angular-innerhtml-to-display-user-generated-content-without-sacrificing-security/https://www.intricatecloud.io/2019/10/using-angular-innerhtml-to-display-user-generated-content-without-sacrificing-security/</span>
                                         <img src={LinkOpenPink} className="link-icon" />
                                     </a>
+                                    <Tooltip anchorSelect=".long-url" place="bottom" className="tooltip-container">
+                                        <span className="tooltip-text">https://www.intricatecloud.io/2019/10/using-angular-innerhtml-to-display-user-generated-content-without-sacrificing-security/ https://www.intricatecloud.io/2019/10/using-angular-innerhtml-to-display-user-generated-content-without-sacrificing-security/</span>
+
+                                    </Tooltip>
                                 </div>
                             </div>
                             <div className='card-footer flex flex-row items-center justify-between'>

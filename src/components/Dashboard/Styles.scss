@@ -1,4 +1,5 @@
 @import "../../constants/variable.scss";
+@import "../../constants/global.scss";
 
 .dashboard-main-container {
 
@@ -105,7 +106,8 @@
 
             .card-flex-container {
                 .card {
-                    flex: 1;
+                    // flex: 1;
+                    width: 45%;
                     background-color: rgba(35, 42, 57, 0.5);
                     padding: 20px;
                     border-radius: 10px;
@@ -126,7 +128,8 @@
                     }
 
                     .card-body {
-                        margin:1.4rem 0px;
+                        margin: 1.4rem 0px;
+
                         .short-url {
                             color: #019cff;
                             font-weight: bold;
@@ -161,7 +164,22 @@
                             margin-top: 5px;
                             font-size: 1.2rem !important;
                             color: $primary-pink !important;
+
+                            span {
+                                overflow: hidden;
+                                white-space: nowrap;
+                                text-overflow: ellipsis;
+                                width: 50%;
+                                display: inline-block;
+                            }
                         }
+                      .tooltip-container{
+                        width: 33rem;
+                        .tooltip-text{
+                            color: $light;
+                            font-weight: 500;
+                        }
+                      }
                     }
 
                     .card-footer {
@@ -216,4 +234,91 @@
         }
 
     }
+
+
+    @media (min-width: 320px) and (max-width: 480px) {
+
+        // Styles for mobile devices
+        /* Adjust font sizes or other styles as needed */
+        .body-container{
+            .create-container{
+                width: 90%;
+            }
+            .history-container{
+                width: 100%;
+                .card-flex-container{
+                    .card{
+                        width: 100%;
+                        margin: 2rem 0px;
+
+                        .card-footer{
+                            .visit-count-container{
+                                .visit-count{
+                                    font-size: 1rem;
+                                }
+                            }
+                            .slash{
+                                padding-left: .5rem;
+                            }
+
+                            .created-at-container{
+                                .created-at{
+                                    padding-left: .5rem;
+                                    font-size: 1rem;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+       
+
+    }
+
+    @media (min-width: 481px) and (max-width: 768px) {
+
+        // Styles for iPads, tablets
+        /* Adjust font sizes or other styles as needed */
+        .body-container{
+            .create-container{
+                width: 50%;
+            }
+            .history-container{
+                .card-flex-container{
+                    .card{
+                        width: 100%;
+                        margin: 2rem 0px;
+                    }
+                }
+            }
+        }
+    }
+
+    @media (min-width: 769px) and (max-width: 1024px) {
+
+        // Styles for small screens, laptops
+        /* Adjust font sizes or other styles as needed */
+        .body-container{
+            .create-container{
+                width: 40%;
+            }
+            .history-container{
+                .card-flex-container{
+                    .card{
+                        width: 100%;
+                        margin: 2rem 0px;
+                    }
+                }
+            }
+        }
+      
+    }
+
+    @media screen and (max-width:350px) {
+        .body-container .history-container .card-flex-container .card .card-footer{
+            flex-direction: column;
+        }
+    }
+
 }

@@ -79,4 +79,37 @@
             }
         }
     }
+
+    @media (min-width: 320px) and (max-width: 480px) {
+
+        // Styles for mobile devices
+        /* Adjust font sizes or other styles as needed */
+        .inner-container{
+            width: 95%;
+            .input-form-container{
+                .form-container{
+                    width: 80%;
+                }
+            }
+        }
+
+    }
+
+    @media (min-width: 481px) and (max-width: 768px) {
+
+        // Styles for iPads, tablets
+        /* Adjust font sizes or other styles as needed */
+        .inner-container{
+            width: 80%;
+        }
+    }
+
+    @media (min-width: 769px) and (max-width: 1024px) {
+
+        // Styles for small screens, laptops
+        /* Adjust font sizes or other styles as needed */
+        .inner-container{
+            width: 50%;
+        }
+    }
 }

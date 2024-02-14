@@ -5,15 +5,21 @@ interface Btn {
     text: string,
     icon?: any,
     isLoading?: boolean,
+    disabled?:boolean,
     onClick: () => void
 }
 
-const Button = ({ type, icon, text, isLoading = false, onClick }: Btn) => {
+
+const blank = () =>{
+
+}
+
+const Button = ({ type, icon, text, isLoading = false, disabled = false, onClick }: Btn) => {
     return (
         <div className='button-main-container'>
             {
-                type == "primary" ?
-                    <button className='button-container primary-button-container' onClick={onClick}>
+                type === "primary" ?
+                    <button className='button-container primary-button-container' onClick={onClick} disabled={isLoading || disabled}>
                         <div className='flex button items-center' >
                             {text}
                             {
@@ -23,8 +29,8 @@ const Button = ({ type, icon, text, isLoading = false, onClick }: Btn) => {
                         </div>
 
                     </button> :
-                    type == "secondary" ?
-                        <button className='button-container secondary-button-container'  disabled={isLoading} onClick={onClick}>
+                    type === "secondary" ?
+                        <button className='button-container secondary-button-container'  disabled={isLoading || disabled} onClick={()=>{ !disabled ? onClick() : blank()}}>
                             <div className='text-center'>
                                 {isLoading ?
                                     <div className="bouncing-loader">
@@ -35,8 +41,8 @@ const Button = ({ type, icon, text, isLoading = false, onClick }: Btn) => {
                             </div>
                         </button>
                         :
-                        type == "success" ?
-                            <button className='button-container success-button-container' onClick={onClick}>
+                        type === "success" ?
+                            <button className='button-container success-button-container' onClick={onClick} disabled={isLoading || disabled}>
                                 <div className='flex button text-center'>{text}
                                     {
                                         icon ?
