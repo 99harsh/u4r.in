@@ -3,6 +3,16 @@
 
 .dashboard-main-container {
 
+    .loading-animation{
+     
+        img {
+                top: 50%;
+                right: 50%;
+                transform: translate(50%, -50%);
+                position: absolute;
+            }
+    }
+
     input {
         &:checked {
             background-color: #22c55e !important;
@@ -50,6 +60,47 @@
 
     .body-container {
         margin-top: 2rem;
+        .input-main-container {
+            padding-top: 3.5rem;
+    
+            .error-message{
+                color: $danger; 
+                padding-left: 1rem;
+            }
+    
+            .input-inner-container {
+                padding: 5px;
+                border: 2px solid $success;
+                background-color: $grey;
+                border-radius: 3rem;
+                margin-bottom: 1rem;
+                box-shadow: 0.625rem 0.562rem 1.375rem 0px rgba(75, 181, 67, 0.38);
+    
+                .link-logo-container {
+                    padding-left: .56rem;
+    
+                    .link-logo {
+                        height: 1.6rem;
+                        width: 1.6rem;
+                    }
+                }
+    
+                .input-box-container {
+                    width: 35rem;
+                    padding: 0px 1rem;
+    
+                    .input-box {
+                        width: 100%;
+                        background-color: transparent;
+                        color: $lite;
+    
+                        &:focus {
+                            outline: none !important;
+                        }
+                    }
+                }
+            }
+        }
 
         .create-container {
             width: 30%;
@@ -70,6 +121,13 @@
                     background-color: transparent;
                     border-radius: 5px;
                     padding: 10px;
+                }
+
+                .input-error{
+                    border-color: $danger !important;
+                }
+                .error-text{
+                    color:$danger;
                 }
 
                 .generate-text {
@@ -241,6 +299,8 @@
         // Styles for mobile devices
         /* Adjust font sizes or other styles as needed */
         .body-container{
+
+            
             .create-container{
                 width: 90%;
             }

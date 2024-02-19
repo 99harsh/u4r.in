@@ -2,6 +2,10 @@
 
 .auth-main-container {
     height: 80vh;
+
+    .text-danger{
+        color:$danger;
+    }
     .inner-container {
         width: 30%;
         border-radius: 1rem;
@@ -49,6 +53,12 @@
                         &:focus{
                             outline: none!important;
                         }
+                    }
+                    .danger-input-box{
+                        border-color: $danger !important;
+                        &:focus{
+                        --tw-ring-offset-color:none!important;
+                    }
                     }
                 }
                 .register-container{
