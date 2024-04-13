@@ -2,6 +2,10 @@
 
 .auth-main-container {
     height: 80vh;
+
+    .text-danger{
+        color:$danger;
+    }
     .inner-container {
         width: 30%;
         border-radius: 1rem;
@@ -50,6 +54,12 @@
                             outline: none!important;
                         }
                     }
+                    .danger-input-box{
+                        border-color: $danger !important;
+                        &:focus{
+                        --tw-ring-offset-color:none!important;
+                    }
+                    }
                 }
                 .register-container{
                     padding-bottom: 2rem;
@@ -77,6 +87,39 @@
                 width: 1rem;
                 margin:0px 5px;
             }
+        }
+    }
+
+    @media (min-width: 320px) and (max-width: 480px) {
+
+        // Styles for mobile devices
+        /* Adjust font sizes or other styles as needed */
+        .inner-container{
+            width: 95%;
+            .input-form-container{
+                .form-container{
+                    width: 80%;
+                }
+            }
+        }
+
+    }
+
+    @media (min-width: 481px) and (max-width: 768px) {
+
+        // Styles for iPads, tablets
+        /* Adjust font sizes or other styles as needed */
+        .inner-container{
+            width: 80%;
+        }
+    }
+
+    @media (min-width: 769px) and (max-width: 1024px) {
+
+        // Styles for small screens, laptops
+        /* Adjust font sizes or other styles as needed */
+        .inner-container{
+            width: 50%;
         }
     }
 }

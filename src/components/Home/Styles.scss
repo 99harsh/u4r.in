@@ -4,165 +4,280 @@
 
     .center-container {
         height: 70vh;
-    
-        .heading-container{
+
+        .heading-container {
             padding-bottom: 1.33rem;
+
             .heading-text {
-                background: linear-gradient(
-                    90deg,
-                    #144ee3 -0.02%,
-                    #eb568e 18.86%,
-                    #a353aa 64.49%,
-                    #144ee3 100.67%
-                  );
+                background: linear-gradient(90deg,
+                        #144ee3 -0.02%,
+                        #eb568e 18.86%,
+                        #a353aa 64.49%,
+                        #144ee3 100.67%);
                 background-clip: text;
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
-                font-size: 5.5rem!important;
+                font-size: 5.5rem !important;
                 font-weight: bold;
+
             }
         }
 
-        .subheading-text{
-            color:$lite;
+        .subheading-text {
+            color: $lite;
             font-size: 1.33rem !important;
             width: 80%;
         }
 
         .switch-container,
-        .register-now-brand{
+        .register-now-brand {
             padding-top: 2.66rem;
         }
 
-        .switch-container{
+        .switch-container {
 
-            .settings-text{
-                color:$lite;
+            .settings-text {
+                color: $lite;
             }
-            .gear-icon{
+
+            .gear-icon {
                 height: 1.66rem;
             }
         }
 
-        .register-now-brand{
-            padding-top:0.83rem;
-            .brand-text{
-                color:$lite;
+        .register-now-brand {
+            padding-top: 0.83rem;
+
+            .brand-text {
+                color: $lite;
                 font-size: 1.2rem !important;
             }
 
-            .brand-number{
-                color:$primary-pink;
+            .brand-number {
+                color: $primary-pink;
             }
 
-            .register-now-text{
-                color:$primary-blue;
+            .register-now-text {
+                color: $primary-blue;
             }
         }
 
-        .accordian-container{
+        .accordian-container {
 
-            .accordian-inner-container{
-                background: rgba(24, 30, 41,0.5);
+            .accordian-inner-container {
+                background: rgba(24, 30, 41, 0.5);
                 padding: 2rem;
                 border-radius: 3rem;
                 border: 2px solid $dark-border;
 
-                .generate-text{
-                    color:$lite;
+                .generate-text {
+                    color: $lite;
                 }
 
             }
 
-            .back-half-container{
-               .inner-backhalf-container{
-                margin:0px 0.83rem;
+            .back-half-container {
+                .inner-backhalf-container {
+                    margin: 0px 0.83rem;
 
-                label{
-                    padding-left: 0.83rem;
-                    color:$lite;
-                    font-size: 1rem;
-                }
+                    label {
+                        padding-left: 0.83rem;
+                        color: $lite;
+                        font-size: 1rem;
+                    }
 
-                .dot{
-                    color: rgba(24, 30, 41,0.5);
-                }
-               }
-            }
-            .input{
-                background-color: $grey;
-                padding:0.83rem;
-                border-radius: 1.66rem;
-                margin-top: 5px;
-                border:2px solid $dark-border;
-
-                .domain-name{
-                    color:$lite;
-                    margin-right: 0.83rem;
-                }
-                .slash-text{
-                    color:$lite;
-                }
-                .lock-icon{
-                    height: 1.66rem;
-                    width: 1.66rem;
-                }
-
-                .back-half-input{
-                    background-color: transparent;
-                    color:$lite;
-                    border:0px;
-                    padding:0px;
-                    &:focus{
-                        outline: none!important;
-                        --tw-ring-color:none !important;
+                    .dot {
+                        color: rgba(24, 30, 41, 0.5);
                     }
                 }
             }
 
-            
-        }   
+            .input {
+                background-color: $grey;
+                padding: 0.83rem;
+                border-radius: 1.66rem;
+                margin-top: 5px;
+                border: 2px solid $dark-border;
+
+                .domain-name {
+                    color: $lite;
+                    margin-right: 0.83rem;
+                }
+
+                .slash-text {
+                    color: $lite;
+                }
+
+                .lock-icon {
+                    height: 1.66rem;
+                    width: 1.66rem;
+                }
+
+                .back-half-input {
+                    background-color: transparent;
+                    color: $lite;
+                    border: 0px;
+                    padding: 0px;
+
+                    &:focus {
+                        outline: none !important;
+                        --tw-ring-color: none !important;
+                    }
+                }
+            }
+
+            .error-container{
+                border-color: $danger !important;
+            }
+
+            .success-container{
+                border-color:$success !important;
+            }
+
+            .backhalf-container-internal{
+                width: 14.5rem;
+
+                .errorText{
+                    color:$danger;
+                    padding-left: 10px;
+                    text-align: left;
+                    display: block;
+                }
+            }
+
+
+        }
     }
 
-    .input-main-container{
+    .input-main-container {
         padding-top: 3.5rem;
-        .input-inner-container{
-            padding:5px;
-            border:2px solid $dark-border;
+
+        .error-message{
+            color: $danger; 
+            padding-left: 1rem;
+        }
+
+        .input-inner-container {
+            padding: 5px;
+            border: 2px solid $dark-border;
             background-color: $grey;
             border-radius: 3rem;
 
-            .link-logo-container{
+            .link-logo-container {
                 padding-left: .56rem;
-                .link-logo{
+
+                .link-logo {
                     height: 1.6rem;
                     width: 1.6rem;
                 }
             }
 
-            .input-box-container{
+            .input-box-container {
                 width: 35rem;
-                padding:0px 1rem;
-                .input-box{
+                padding: 0px 1rem;
+
+                .input-box {
                     width: 100%;
                     background-color: transparent;
                     color: $lite;
-                    &:focus{
-                        outline: none!important;
+
+                    &:focus {
+                        outline: none !important;
                     }
                 }
             }
         }
     }
 
-    .active-text-box{
+    .active-text-box {
         border-color: $success !important;
         //75 181 67)
         box-shadow: 0.625rem 0.562rem 1.375rem 0px rgba(75, 181, 67, 0.38);
 
-        .input-box{
+        .input-box {
             color: $success !important;
             font-size: 20px;
         }
+    }
+
+    .input-error{
+        border-color: $danger  !important;
+    }
+
+
+  
+
+    @media (min-width: 320px) and (max-width: 480px) {
+
+        // Styles for mobile devices
+        /* Adjust font sizes or other styles as needed */
+        .center-container {
+
+            .subheading-text {
+                font-size: 1rem !important;
+            }
+
+            .heading-container {
+                .heading-text {
+                    font-size: 2.4rem !important;
+                    text-align: center;
+                }
+            }
+
+            .register-now-brand{
+                text-align: center;
+                .brand-text{
+                    font-size: 1rem !important;
+                }
+            }
+        }
+
+        .input-main-container {
+            .input-inner-container {
+                .input-box-container {
+                    width: auto !important;
+                }
+            }
+        }
+
+    }
+
+    @media (min-width: 481px) and (max-width: 768px) {
+
+        // Styles for iPads, tablets
+        /* Adjust font sizes or other styles as needed */
+      
+        .center-container {
+            .subheading-text {
+                font-size: 1.2rem !important;
+            }
+
+            .heading-container {
+                .heading-text {
+                    font-size: 3.4rem !important;
+                }
+            }
+
+            
+        }
+
+    }
+
+    @media (min-width: 769px) and (max-width: 1024px) {
+
+        // Styles for small screens, laptops
+        /* Adjust font sizes or other styles as needed */
+        .center-container {
+            .heading-container {
+                .heading-text {
+                    font-size: 4.4rem !important;
+                }
+            }
+        }
+    }
+
+    @media (min-width: 1025px) and (max-width: 1200px) {
+        // Styles for desktops, large screens
+        /* Adjust font sizes or other styles as needed */
     }
 }

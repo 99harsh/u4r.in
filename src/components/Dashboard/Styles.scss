@@ -1,6 +1,17 @@
 @import "../../constants/variable.scss";
+@import "../../constants/global.scss";
 
 .dashboard-main-container {
+
+    .loading-animation{
+     
+        img {
+                top: 50%;
+                right: 50%;
+                transform: translate(50%, -50%);
+                position: absolute;
+            }
+    }
 
     input {
         &:checked {
@@ -49,6 +60,47 @@
 
     .body-container {
         margin-top: 2rem;
+        .input-main-container {
+            padding-top: 3.5rem;
+    
+            .error-message{
+                color: $danger; 
+                padding-left: 1rem;
+            }
+    
+            .input-inner-container {
+                padding: 5px;
+                border: 2px solid $success;
+                background-color: $grey;
+                border-radius: 3rem;
+                margin-bottom: 1rem;
+                box-shadow: 0.625rem 0.562rem 1.375rem 0px rgba(75, 181, 67, 0.38);
+    
+                .link-logo-container {
+                    padding-left: .56rem;
+    
+                    .link-logo {
+                        height: 1.6rem;
+                        width: 1.6rem;
+                    }
+                }
+    
+                .input-box-container {
+                    width: 35rem;
+                    padding: 0px 1rem;
+    
+                    .input-box {
+                        width: 100%;
+                        background-color: transparent;
+                        color: $lite;
+    
+                        &:focus {
+                            outline: none !important;
+                        }
+                    }
+                }
+            }
+        }
 
         .create-container {
             width: 30%;
@@ -69,6 +121,13 @@
                     background-color: transparent;
                     border-radius: 5px;
                     padding: 10px;
+                }
+
+                .input-error{
+                    border-color: $danger !important;
+                }
+                .error-text{
+                    color:$danger;
                 }
 
                 .generate-text {
@@ -105,7 +164,8 @@
 
             .card-flex-container {
                 .card {
-                    flex: 1;
+                    // flex: 1;
+                    width: 45%;
                     background-color: rgba(35, 42, 57, 0.5);
                     padding: 20px;
                     border-radius: 10px;
@@ -126,7 +186,8 @@
                     }
 
                     .card-body {
-                        margin:1.4rem 0px;
+                        margin: 1.4rem 0px;
+
                         .short-url {
                             color: #019cff;
                             font-weight: bold;
@@ -161,7 +222,21 @@
                             margin-top: 5px;
                             font-size: 1.2rem !important;
                             color: $primary-pink !important;
+
+                            span {
+                                overflow: hidden;
+                                white-space: nowrap;
+                                text-overflow: ellipsis;
+                                display: inline-block;
+                            }
                         }
+                      .tooltip-container{
+                        width: 33rem;
+                        .tooltip-text{
+                            color: $light;
+                            font-weight: 500;
+                        }
+                      }
                     }
 
                     .card-footer {
@@ -208,6 +283,10 @@
                                 width: 1rem;
                                 margin-right: 4px;
                             }
+
+                            .none{
+                                display: none;
+                            }
                         }
                     }
 
@@ -216,4 +295,93 @@
         }
 
     }
+
+
+    @media (min-width: 320px) and (max-width: 480px) {
+
+        // Styles for mobile devices
+        /* Adjust font sizes or other styles as needed */
+        .body-container{
+
+            
+            .create-container{
+                width: 90%;
+            }
+            .history-container{
+                width: 100%;
+                .card-flex-container{
+                    .card{
+                        width: 100%;
+                        margin: 2rem 0px;
+
+                        .card-footer{
+                            .visit-count-container{
+                                .visit-count{
+                                    font-size: 1rem;
+                                }
+                            }
+                            .slash{
+                                padding-left: .5rem;
+                            }
+
+                            .created-at-container{
+                                .created-at{
+                                    padding-left: .5rem;
+                                    font-size: 1rem;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+       
+
+    }
+
+    @media (min-width: 481px) and (max-width: 768px) {
+
+        // Styles for iPads, tablets
+        /* Adjust font sizes or other styles as needed */
+        .body-container{
+            .create-container{
+                width: 50%;
+            }
+            .history-container{
+                .card-flex-container{
+                    .card{
+                        width: 100%;
+                        margin: 2rem 0px;
+                    }
+                }
+            }
+        }
+    }
+
+    @media (min-width: 769px) and (max-width: 1024px) {
+
+        // Styles for small screens, laptops
+        /* Adjust font sizes or other styles as needed */
+        .body-container{
+            .create-container{
+                width: 40%;
+            }
+            .history-container{
+                .card-flex-container{
+                    .card{
+                        width: 100%;
+                        margin: 2rem 0px;
+                    }
+                }
+            }
+        }
+      
+    }
+
+    @media screen and (max-width:350px) {
+        .body-container .history-container .card-flex-container .card .card-footer{
+            flex-direction: column;
+        }
+    }
+
 }

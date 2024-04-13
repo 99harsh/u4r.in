@@ -1,0 +1,46 @@
+.card {
+    background-color: #1a1a1a;
+    /* Dark theme background color */
+    color: #fff;
+    /* Text color */
+    border-radius: 8px;
+    padding: 20px;
+    width: 300px;
+    animation: fade-in 0.5s ease-out;
+    /* Animation for fading in */
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.skeleton-loader {
+    background-color: #333;
+    /* Dark theme background color */
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.skeleton-loader-header,
+.skeleton-loader-content,
+.skeleton-loader-footer {
+    animation: pulse 1.5s ease-in-out infinite alternate;
+    /* Animation for pulsating */
+}
+
+@keyframes pulse {
+    from {
+        background-color: #555;
+    }
+
+    to {
+        background-color: #777;
+        /* Darker shade for pulsating effect */
+    }
+}
