@@ -12,6 +12,8 @@ import LinkIcon from '../../assets/icons/link.svg';
 import CopyIcon from '../../assets/icons/clipboard.svg';
 
 import { CopyToClipboard } from 'react-copy-to-clipboard';
+
+
 const Home = () => {
 
     const [accordionOpen, setAccordionOpen] = useState(false);
@@ -107,6 +109,7 @@ const Home = () => {
             setIsDisabled(false);
         }
     }
+
     useEffect(() => {
         if (errorMessage.settingsError === "" && formData?.custom_short_url?.length >= 7) {
             setIsDisabled(true);
@@ -120,8 +123,6 @@ const Home = () => {
             }
         }
     }, [formData.custom_short_url]);
-
-
 
     return (
         <div className='home-main-container'>

@@ -3,7 +3,7 @@ import { createContext, useEffect, useState } from 'react';
 export const AuthContext = createContext({
     isAuthenticated: null,
     checkLogin:()=>{},
-    login:()=>{},
+    login:(auth_token:string, user_name:string)=>{},
     logout:()=>{}
 })
 
@@ -12,7 +12,7 @@ const AuthContextProvider = ({children}:any) =>{
 
     const checkAuthentication = () =>{
 
-        const locals = localStorage.getItem("is_login");
+        const locals = localStorage.getItem("auth_token");
         console.log(locals)
         if(locals != null){
             if(locals == "true"){
@@ -27,8 +27,9 @@ const AuthContextProvider = ({children}:any) =>{
         }
     }
 
-    const login = () =>{
-        localStorage.setItem("is_login", "true");
+    const login = (auth_token:string, user_name:string) =>{
+        localStorage.setItem("auth_token", auth_token);
+        localStorage.setItem("user_name", user_name);
         setIsAuthenticated(true);
     }
 

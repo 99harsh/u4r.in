@@ -6,7 +6,9 @@ import SignInIcon from '../../assets/icons/sign-in.svg';
 
 import Button from '../Button/Button';
 
-const Header = () => {
+import mixpanel from '../../utils/mixpanel';
+
+const Header = ({route}:any) => {
 
     const navigate = useNavigate();
 
@@ -21,7 +23,7 @@ const Header = () => {
                         <Button type="primary" icon={SignInIcon} text='Login'
                             onClick={() => {
                                 navigate("/auth", {state: {action:"Login"}})
-                                console.log("Log")
+                                
                             }}
                         />
                     </div>

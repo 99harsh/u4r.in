@@ -12,6 +12,7 @@ import settings from "../../constants/settings";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/Auth-Context";
 
+
 const Auth = () => {
 
     const location = useLocation();
@@ -77,7 +78,7 @@ const Auth = () => {
                 const payload = authFormData;
                 const {data} = await axios.post(`${settings.appURL}user/register`, payload);
                 if(data.status == 200){
-                    login()
+                    login(data.data.access_token, data.data.full_name);
                     navigate("/dashboard")
                 }else if(data.status == 409){
                     setError((prevState:any) => ({...prevState, email: "Email is already exist."}))
@@ -89,11 +90,11 @@ const Auth = () => {
                 delete payload.full_name;
                 const {data} = await axios.post(`${settings.appURL}user/login`, payload);
                 if(data.status == 200){
-                    localStorage.setItem("is_login", "true");
-                    login();
+                    
+                   login(data.data.access_token, data.data.full_name);
                     navigate("/dashboard")
                 }else if(data.status == 401){
-                    
+                    setError((prevState:any) => ({...prevState, password: "Invalid Email/Password"}));
                 }else{
                     alert("Something Went Wrong!");
                 }
@@ -134,9 +135,9 @@ const Auth = () => {
                                         <span className="text-danger pt-1 pl-1">{error.password}</span>
                                         :"" 
                                     }
-                                    <div className="forgot-container">
+                                    {/* <div className="forgot-container">
                                         <a href="#" className="forgot-text">Forgot Password?</a>
-                                    </div>
+                                    </div> */}
                                 </div>
 
                                 <div className="input-container text-center">

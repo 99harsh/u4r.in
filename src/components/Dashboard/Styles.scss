@@ -227,7 +227,6 @@
                                 overflow: hidden;
                                 white-space: nowrap;
                                 text-overflow: ellipsis;
-                                width: 50%;
                                 display: inline-block;
                             }
                         }
@@ -283,6 +282,10 @@
                                 height: 1rem;
                                 width: 1rem;
                                 margin-right: 4px;
+                            }
+
+                            .none{
+                                display: none;
                             }
                         }
                     }
