@@ -1,5 +1,5 @@
 const settings = {
-      appURL:"https://u4r.in:3000/v1/"
+      appURL:"https://u4r.in/v1/"
 }   
 
 export default settings;
