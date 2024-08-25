@@ -13,16 +13,13 @@ const AuthContextProvider = ({children}:any) =>{
     const checkAuthentication = () =>{
 
         const locals = localStorage.getItem("auth_token");
-        console.log(locals)
         if(locals != null){
             if(locals == "true"){
                 setIsAuthenticated(true);
             }else{
-                console.log("SETTING FALSE NOW")
                 setIsAuthenticated(false);
             }
         }else{
-            console.log("SETTING FALSE");
             setIsAuthenticated(false);
         }
     }

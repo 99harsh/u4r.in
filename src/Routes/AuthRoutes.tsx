@@ -1,6 +1,4 @@
-import React, { Component, useContext } from "react";
-import { Route, Navigate } from 'react-router-dom';
-import { AuthContext } from "../context/Auth-Context";
+import {  Navigate } from 'react-router-dom';
 
 const AuthRoute = ({ children }: any) => {
     const isAuthenticated  = localStorage.getItem("auth_token");

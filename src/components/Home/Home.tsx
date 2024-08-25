@@ -12,6 +12,7 @@ import LinkIcon from '../../assets/icons/link.svg';
 import CopyIcon from '../../assets/icons/clipboard.svg';
 
 import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { useNavigate } from 'react-router-dom';
 
 
 const Home = () => {
@@ -30,12 +31,11 @@ const Home = () => {
     const [copied, setCopied] = useState(false);
     const [isDisabled, setIsDisabled] = useState(false);
     const [isAvailable, setIsAvailable] = useState(false);
-
-
+    const navigate = useNavigate();
 
     const handleInputChange = (input: string, text: string) => {
         if (input === "destination_url") {
-            const regex = /^(https?|ftp):\/\/[^\s\/$.?#].[^\s]*/;
+            const regex = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*/;
             if (text.length > 500) {
                 setErrorMessage((prevState: any) => ({ ...prevState, message: "Destination url must be less than 500 characters!" }));
             } else if (!regex.test(text)) {
@@ -43,8 +43,6 @@ const Home = () => {
             } else {
                 setErrorMessage((prevState: any) => ({ ...prevState, message: "" }));
             }
-
-            console.log(regex.test(text), text, errorMessage.message)
         } else if (input === "custom_short_url") {
             const regex = /^[a-zA-Z0-9_-]+$/;
             if (text === "") {
@@ -85,7 +83,7 @@ const Home = () => {
                 }
             }
         } catch (error) {
-            console.log("Error", error)
+            alert("Something went wrong!");
         } finally {
             setIsLoading(false);
         }
@@ -94,7 +92,7 @@ const Home = () => {
     const checkBackHalfHandler = async (text: string) => {
         setIsDisabled(true);
         try {
-            const { data } = await axios.get(`https://u4r.in/check_availability/${text}`)
+            const { data } = await axios.get(`${settings.appURL}${text}`)
             if (data.status === 200 && data?.data?.is_available) {
                 setIsAvailable(true)
                 setIsDisabled(false);
@@ -105,7 +103,6 @@ const Home = () => {
             }
         } catch (error) {
             alert("Something Went Wrong!");
-            console.log("Server Error!", error);
             setIsDisabled(false);
         }
     }
@@ -142,7 +139,7 @@ const Home = () => {
                             <div className={`input-main-container`}>
                                 <div className='input-inner-container flex flex-row items-center active-text-box'>
                                     <div className='link-logo-container'>
-                                        <img src={LinkIcon} className='link-logo' />
+                                        <img src={LinkIcon} className='link-logo' alt="link icon" />
                                     </div>
                                     <div className='input-box-container'>
                                         <input className={`input-box`} placeholder='Enter the link here' value={shortURL} />
@@ -170,7 +167,7 @@ const Home = () => {
                             <div className={`input-main-container`}>
                                 <div className={`input-inner-container flex flex-row items-center ${errorMessage.message != "" ? 'input-error' : ''}`}>
                                     <div className='link-logo-container'>
-                                        <img src={LinkIcon} className='link-logo' />
+                                        <img src={LinkIcon} className='link-logo' alt='link-logo' />
                                     </div>
                                     <div className='input-box-container'>
                                         <input className='input-box' placeholder='Enter the link here' value={formData.destination_url} onChange={(e: any) => { handleInputChange('destination_url', e.target.value) }} />
@@ -191,10 +188,10 @@ const Home = () => {
 
                             <div className='switch-container'>
 
-                                <label className="relative inline-flex items-center cursor-pointer pl-3 gear-icon" onClick={() => { setAccordionOpen(!accordionOpen) }}>
-                                    <img src={GearIcon} className='gear-icon' />
+                                <span className="relative inline-flex items-center cursor-pointer pl-3 gear-icon" onClick={() => { setAccordionOpen(!accordionOpen) }}>
+                                    <img src={GearIcon} className='gear-icon' alt='gear icon' />
                                     <span className="ms-1 text-sm font-medium text-gray-900 dark:text-gray-300 settings-text">Customize</span>
-                                </label>
+                                </span>
                             </div>
                             <span className='text-primary'>{isDisabled}</span>
                             <div
@@ -204,29 +201,22 @@ const Home = () => {
                                     }`}
                             >
                                 <div className="overflow-hidden accordian-inner-container">
-                                    {/* <div className='text-center'>
-                                        <label className="relative inline-flex items-center cursor-pointer justify-center">
-                                            <input type="checkbox" value="" className="sr-only peer" />
-                                            <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
-                                            <span className="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300 generate-text">Generate QR</span>
-                                        </label>
-                                    </div> */}
+
                                     <div className="back-half-container flex justify-center">
                                         <div className='inner-backhalf-container'>
-                                            <label>Domain</label>
-                                            <div className='input domain-container items-center'>
+                                            <label htmlFor="domain">Domain</label>
+                                            <div id="domain" className='input domain-container items-center'>
                                                 <span className='domain-name'>https://u4r.in</span>
-                                                {/* <img src={LockIcon} className='lock-icon'/> */}
                                             </div>
                                         </div>
                                         <div className='inner-backhalf-container'>
-                                            <label className='dot'>. </label>
+                                            <span className='dot'>. </span>
                                             <div className='input text-center'>
                                                 <span className='slash-text'>/</span>
                                             </div>
                                         </div>
                                         <div className='inner-backhalf-container backhalf-container-internal'>
-                                            <label>Enter a custom back-half</label>
+                                            <label htmlFor='backhalf'>Enter a custom back-half</label>
                                             <div className={`input text-center  ${errorMessage.settingsError != '' ? 'error-container' : ''} ${errorMessage.settingsError === "" && isAvailable ? 'success-container' : ""}`}>
                                                 <input type='text' className="back-half-input" placeholder='my-resume' onChange={(e: any) => { handleInputChange('custom_short_url', e.target.value) }} />
                                             </div>
@@ -240,7 +230,12 @@ const Home = () => {
                         </>
                 }
                 <div className='register-now-brand'>
-                    <h5 className='brand-text'>Upgrade Your <span className='brand-number'>Link Game</span> and Experience Endless Features!  <a href='#' className='register-now-text'>Register Now</a> to enjoy Unlimited Usage.</h5>
+                    <h5 className='brand-text'>Upgrade Your <span className='brand-number'>Link Game</span> and Experience Endless Features!
+                        <span
+                            onClick={() => {
+                                navigate("/auth", { state: { action: "Register" } })
+                            }}
+                            className='register-now-text'> Register Now</span> to enjoy Unlimited Usage.</h5>
                 </div>
             </div>
             <div>
