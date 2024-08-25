@@ -1,8 +1,5 @@
-import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
-import { useContext, useEffect } from 'react';
-import { AuthContext } from './context/Auth-Context';
+import { BrowserRouter, Route, Routes, } from 'react-router-dom';
 import './App.scss';
-
 
 import Backdrop from './assets/images/backdrop.svg';
 import Cubes from './assets/images/cubes.svg';
@@ -13,47 +10,16 @@ import Dashboard from './components/Dashboard/Dashboard';
 import ProtectedRoute from './Routes/PrivateRoutes'
 import AuthContextProvider from './context/Auth-Context';
 import AuthRoute from './Routes/AuthRoutes';
-import { disableReactDevTools } from '@fvilers/disable-react-devtools';
+import Details from './components/Details/Details';
 
 
 
 function App() {
-  // useEffect(() => {
-  //   disableReactDevTools()
-  //   const handleContextmenu = (e: any) => {
-  //     e.preventDefault()
-  //   }
-  //   document.addEventListener('contextmenu', handleContextmenu)
-
-
-  //   document.onkeydown = function (e) {
-
-  //     // disable F12 key
-  //     if (e.keyCode == 123) {
-  //       return false;
-  //     }
-
-  //     // disable I key
-  //     if (e.ctrlKey && e.shiftKey && e.keyCode == 73) {
-  //       return false;
-  //     }
-
-  //     // disable J key
-  //     if (e.ctrlKey && e.shiftKey && e.keyCode == 74) {
-  //       return false;
-  //     }
-
-  //     // disable U key
-  //     if (e.ctrlKey && e.keyCode == 85) {
-  //       return false;
-  //     }
-  //   }
-  // }, [])
   return (
     <div className="main-container">
       <div>
-        <img src={Backdrop} className='main-backdrop-img' />
-        <img src={Cubes} className='main-backdrop-img' />
+        <img src={Backdrop} className='main-backdrop-img' alt='backdrop-img' />
+        <img src={Cubes} className='main-backdrop-img' alt='cubes' />
       </div>
       <div>
         <AuthContextProvider>
@@ -64,6 +30,14 @@ function App() {
                 element={
                   <ProtectedRoute>
                     <Dashboard />
+                  </ProtectedRoute>
+                }
+              />
+               <Route
+                path="/url-details"
+                element={
+                  <ProtectedRoute>
+                    <Details />
                   </ProtectedRoute>
                 }
               />
@@ -83,8 +57,6 @@ function App() {
                   </AuthRoute>
                 }
               />
-              {/* <Route path='/' element={<Home />} /> */}
-              {/* <Route path='/auth' element={<Auth />} /> */}
 
             </Routes>
           </BrowserRouter>

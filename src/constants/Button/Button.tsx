@@ -31,13 +31,17 @@ const Button = ({ type, icon, text, isLoading = false, disabled = false, onClick
                     </button> :
                     type === "secondary" ?
                         <button className='button-container secondary-button-container'  disabled={isLoading || disabled} onClick={()=>{ !disabled ? onClick() : blank()}}>
-                            <div className='text-center'>
+                            <div className='text-center '>
                                 {isLoading ?
                                     <div className="bouncing-loader">
                                         <div></div>
                                         <div></div>
                                         <div></div>
                                     </div> : text}
+                                    {
+                                icon && !isLoading ?
+                                    <img src={icon} className='icon' /> : ""
+                            }
                             </div>
                         </button>
                         :

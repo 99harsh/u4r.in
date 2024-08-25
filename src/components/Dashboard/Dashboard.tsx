@@ -6,22 +6,23 @@ import LinkOpen from '../../assets/icons/link-open.svg';
 import LinkOpenPink from '../../assets/icons/link-open-pink.svg';
 import EyeIcon from '../../assets/icons/eye-icon.svg';
 import CopyIcon from '../../assets/icons/copy-white.svg';
-import DownloadIcon from '../../assets/icons/download.svg';
+
 import axios from "axios";
 import { useState, useEffect, createRef } from "react";
 import settings from "../../constants/settings";
 import CopyToClipboard from "react-copy-to-clipboard";
 import LinkIcon from '../../assets/icons/link.svg';
-import CardSkeleton from "../../constants/Loader/Loader";
+import AnalyticsIcon from "../../assets/icons/analytics.svg";
+
 import LoaderAnimation from "../../assets/icons/loader.svg";
 import { useNavigate } from "react-router-dom";
 import { format } from 'date-fns';
-import QRCode from 'react-qr-code';
+import React from "react";
 
 const Dashboard = () => {
 
     const navigator = useNavigate()
-    const [accordionOpen, setAccordionOpen] = useState(false);
+
     const [userName, setUserName] = useState("User");
     const [isCreated, setIsCreated] = useState(false);
     const [errorMessage, setErrorMessage] = useState({ titleError: "", message: "", settingsError: "" });
@@ -35,7 +36,6 @@ const Dashboard = () => {
     const [shortURL, setShortURL] = useState("");
     const [copied, setCopied] = useState(false);
     const [isDisabled, setIsDisabled] = useState(false);
-    const [isAvailable, setIsAvailable] = useState(false);
     const [isInitalLoad, setInitialLoad] = useState(true);
     const [urldata, setUrlData] = useState({ data: [] });
     const qrCodeRef: any = createRef();
@@ -57,8 +57,6 @@ const Dashboard = () => {
             } else {
                 setErrorMessage((prevState: any) => ({ ...prevState, message: "" }));
             }
-
-            console.log(regex.test(text), text, errorMessage.message)
         } else if (input === "custom_short_url") {
             const regex = /^[a-zA-Z0-9_-]+$/;
             if (text === "") {
@@ -83,8 +81,6 @@ const Dashboard = () => {
             }
             else if (formData.destination_url === "") {
                 setErrorMessage((prevState: any) => ({ ...prevState, message: "Please enter destination url!" }))
-            } else if (errorMessage.settingsError != "") {
-                setAccordionOpen(true);
             } else {
                 setErrorMessage((prevState: any) => ({ ...prevState, message: "" }))
                 setErrorMessage((prevState: any) => ({ ...prevState, settingsError: "" }))
@@ -102,7 +98,7 @@ const Dashboard = () => {
                 }
             }
         } catch (error) {
-            console.log("Error", error)
+            alert("Something went wrong!");
         } finally {
             loadUrlData();
             setIsLoading(false);
@@ -112,35 +108,20 @@ const Dashboard = () => {
     const checkBackHalfHandler = async (text: string) => {
         setIsDisabled(true);
         try {
-            const { data } = await axios.get(`https://u4r.in/check_availability/${text}`)
+            const { data } = await axios.get(`${settings.appURL}/check_availability/${text}`)
             if (data.status === 200 && data?.data?.is_available) {
-                setIsAvailable(true)
                 setIsDisabled(false);
             } else {
                 setErrorMessage((prevState: any) => ({ ...prevState, settingsError: "Back half link already exist!" }))
-                setIsAvailable(false);
                 setIsDisabled(true);
             }
         } catch (error) {
             alert("Something Went Wrong!");
-            console.log("Server Error!", error);
             setIsDisabled(false);
         }
     }
 
-    const downloadQRCode = () => {
-        const canvas = qrCodeRef.current.querySelector('canvas');
-        console.log("CANVAS", canvas)
-        const pngUrl = canvas
-            .toDataURL("image/png")
-            .replace("image/png", "image/octet-stream");
-        let downloadLink = document.createElement("a");
-        downloadLink.href = pngUrl;
-        downloadLink.download = "QRCode.png";
-        document.body.appendChild(downloadLink);
-        downloadLink.click();
-        document.body.removeChild(downloadLink);
-    };
+
 
     const loadUrlData = async () => {
         try {
@@ -152,51 +133,36 @@ const Dashboard = () => {
             const headers = {
                 access_token: localStorage.getItem("auth_token")
             }
-            console.log(headers);
             const { data } = await axios.get(`${settings.appURL}user/urls`, { headers: headers });
-            console.log(data.data);
-            if (data.status == 200) {
+            if (data.status === 200) {
                 setUrlData((prevState: any) => ({ ...prevState, data: data.data }));
-                console.log("DATA", data.data)
-            } else if (data.status == 401) {
+            } else if (data.status === 401) {
                 localStorage.clear();
                 navigator("/")
             }
         } catch (error) {
-            console.log("ERROR", error);
+            alert("Something went wrong!")
         } finally {
             setInitialLoad(false);
         }
     }
 
-    // const changeLinkStatus = (element:any) =>{
-    //     try{
-    //         const {data} = axios.post()
-    //     }catch(error){
-
-    //     }finally{
-
-    //     }
-    // }
-
-    const logout = () =>{
-        try{
+    const logout = async () => {
+        try {
             const headers = {
                 access_token: localStorage.getItem("auth_token")
             }
-            const data = axios.get(`${settings.appURL}user/logout`, {headers:headers});
+            await axios.get(`${settings.appURL}user/logout`, { headers: headers });
             localStorage.clear();
             navigator("/")
-            console.log("DATA", data);
-        }catch(error){
-            console.log("ERROR", error);
+        } catch (error) {
+            alert("Something went wrong!");
         }
     }
 
     useEffect(() => {
         if (errorMessage.settingsError === "" && formData?.custom_short_url?.length >= 7) {
             setIsDisabled(true);
-            setIsAvailable(false);
             const delay = 300;
             const debounce = setTimeout(() => {
                 checkBackHalfHandler(formData.custom_short_url)
@@ -233,7 +199,7 @@ const Dashboard = () => {
 
                         <div id="dropdownInformation" className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-35 dark:bg-gray-700 dark:divide-gray-600 dropdown-container">
                             <div className="py-2">
-                                <button onClick={()=>{logout()}} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</button>
+                                <button onClick={() => { logout() }} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</button>
                             </div>
                         </div>
                     </div>
@@ -261,6 +227,7 @@ const Dashboard = () => {
                                                     <input className={`input-box`} placeholder='Enter the link here' value={shortURL} />
                                                 </div>
                                                 <div className='button-container'>
+
                                                     <CopyToClipboard text={shortURL}
                                                         onCopy={() => { setCopied(true) }}>
                                                         <Button type='success' text={`${copied ? 'Copied' : 'Copy'}`} icon={CopyIcon} onClick={() => { }} />
@@ -273,7 +240,7 @@ const Dashboard = () => {
                                                 setShortURL("");
                                                 setFormData((prevState: any) => ({ ...prevState, destination_url: "" }))
                                                 setFormData((prevState: any) => ({ ...prevState, custom_short_url: "" }))
-                                                setIsAvailable(false);
+
                                                 setIsCreated(false);
                                             }} />
                                         </div>
@@ -303,15 +270,6 @@ const Dashboard = () => {
                                                     <span className="error-text">{errorMessage.settingsError}</span> : ""
                                             }
                                         </div>
-                                        {/* <div className="input-container flex flex-col">
-                          <div>
-                              <label className="relative inline-flex items-center cursor-pointer justify-center">
-                                  <input type="checkbox" value="" className="sr-only peer" />
-                                  <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-red after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
-                                  <span className="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300 generate-text">Generate QR</span>
-                              </label>
-                          </div>
-                      </div> */}
                                         <div className="">
                                             <Button type="secondary" text="Generate Short Link"
                                                 isLoading={isLoading}
@@ -333,19 +291,13 @@ const Dashboard = () => {
                                         </div>
                                         <div className="card-flex-container flex flex-row flex-wrap ">
                                             {
-                                                urldata.data.map((element: any) => {
+                                                urldata.data.map((element: any, index: any) => {
                                                     return (
-                                                        <div className='card'>
+                                                        <div className='card' key={index}>
                                                             <div className='card-header flex items-center justify-between'>
                                                                 <div>
                                                                     <p className="card-heading">{element.title}</p>
                                                                 </div>
-                                                                {/* <label className="flex items-center relative w-max cursor-pointer select-none">
-                                                    <input checked={element.status} type="checkbox" className="appearance-none transition-colors cursor-pointer w-14 h-7 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-blue-500 bg-red-500" />
-    
-                                                    <span className="w-7 h-7 right-7 absolute rounded-full transform transition-transform bg-gray-200" />
-                                                </label> */}
-
                                                             </div>
                                                             <div className='card-body flex flex-col'>
                                                                 <div className='flex flex-col'>
@@ -374,6 +326,14 @@ const Dashboard = () => {
                                                                     </div>
                                                                 </div>
                                                                 <div className="flex flex-row items-center">
+                                                                    <button className="btn-copy flex items-center mr-2" onClick={()=>{
+                                                                        navigator(`/url-details?id=${element.id}`)
+                                                                    }} >
+                                                                    <div className="flex flex-row copy-button-container items-center">
+                                                                                <img src={AnalyticsIcon} className="copy-icon" />
+                                                                                <span>Analytics</span>
+                                                                            </div>
+                                                                    </button>
                                                                     <button className="btn-copy flex items-center">
                                                                         <CopyToClipboard text={element.shorten_url}>
                                                                             <div className="flex flex-row copy-button-container items-center">
@@ -381,11 +341,9 @@ const Dashboard = () => {
                                                                                 <span>Copy</span>
                                                                             </div>
                                                                         </CopyToClipboard>
-                                                                      
+
 
                                                                     </button>
-
-
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -402,4 +360,4 @@ const Dashboard = () => {
     )
 }
 
-export default Dashboard;
+export default React.memo(Dashboard);

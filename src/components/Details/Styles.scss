@@ -1,0 +1,41 @@
+@import "../../constants/variable.scss";
+table tr td, table tr th{
+    background-color: transparent !important;
+    color: $light !important;
+}
+
+.table-custom{
+    border: 1px solid;
+    border-color: $dark-border;
+    padding: 10px;
+    border-radius: 5px;
+    span{
+        color: #93abff;
+        font-size: 1.2rem;
+        border-bottom: 1px solid $dark-border;
+    }
+
+    a{
+        color: $primary-pink !important;
+    }
+}
+.loading-animation{
+     
+    img {
+            top: 50%;
+            right: 50%;
+            transform: translate(50%, -50%);
+            position: absolute;
+        }
+}
+
+.create-container{
+    background-color: rgba(35, 42, 57, 0.5);
+    padding: 1rem;
+    border-radius: 5px;
+    .history-heading{
+        font-size: 1.5rem;
+        color: #93abff;
+        margin-bottom: 2rem;
+    }
+}
