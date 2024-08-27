@@ -92,7 +92,7 @@ const Home = () => {
     const checkBackHalfHandler = async (text: string) => {
         setIsDisabled(true);
         try {
-            const { data } = await axios.get(`${settings.appURL}${text}`)
+            const { data } = await axios.get(`https://u4r.in/check_availability/${text}`)
             if (data.status === 200 && data?.data?.is_available) {
                 setIsAvailable(true)
                 setIsDisabled(false);
